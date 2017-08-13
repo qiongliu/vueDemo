@@ -18,6 +18,7 @@
 	.m_footer {
 		background: $c-topft-bg;
 		display: flex;
+		// align-self: flex-end;
 		.item {
 			flex: 1;
 			text-align: center;

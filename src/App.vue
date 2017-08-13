@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <m-header></m-header>
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
+    <div class="content">
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </div>
     <m-footer></m-footer>
   </div>
 </template>
@@ -25,5 +27,8 @@ export default {
     height: 100%;
     flex-direction: column;
     justify-content: space-between;
+  }
+  .content {
+    flex: 1;
   }
 </style>

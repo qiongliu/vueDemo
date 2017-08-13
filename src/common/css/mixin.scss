@@ -31,11 +31,12 @@
 }
 
 @mixin bg-image ($url) {
-	background-image: url($url + ".png");
+	// background-image: url($url + ".png");
+	background-image: url($url + "@2x.png");
 
-	@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-		background-image: url($url + "@2x.png");
-	}
+	// @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+		
+	// }
 
 	// @media only screen and (-webkit-min-device-pixel-ratio: 3) {
 	// 	background-image: url($url + "@3x.png");

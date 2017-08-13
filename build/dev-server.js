@@ -49,6 +49,98 @@ apiRoutes.get('/getSliderInfo',function(req,res) {
       code: 0,
       data: data
     })
+  } else {
+    res.json({
+      code: 1
+    })
+  }
+})
+
+apiRoutes.get('/getWkInfo',function(req,res) {
+  var data = [
+    {
+      id: 1,
+      linkUrl: 'javascript:;',
+      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
+      author: '张小美',
+      time: '32`15`22',
+      people: '20177'
+    },
+    {
+      id: 2,
+      linkUrl: 'javascript:;',
+      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
+      author: '张小美',
+      time: '32`15`22',
+      people: '20177'
+    },
+    {
+      id: 3,
+      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
+      author: '张小美',
+      time: '32`15`22',
+      people: '20177'
+    },
+    {
+      id: 4,
+      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
+      author: '张小美',
+      time: '32`15`22',
+      people: '20177'
+    },
+    {
+      id: 5,
+      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
+      author: '张小美',
+      time: '32`15`22',
+      people: '20177'
+    },
+    {
+      id: 6,
+      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
+      author: '张小美',
+      time: '32`15`22',
+      people: '20177'
+    },
+    {
+      id: 7,
+      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
+      author: '张小美',
+      time: '32`15`22',
+      people: '20177'
+    },
+    {
+      id: 8,
+      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
+      author: '张小美',
+      time: '32`15`22',
+      people: '20177'
+    },
+    {
+      id: 9,
+      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
+      author: '张小美',
+      time: '32`15`22',
+      people: '20177'
+    },
+    {
+      id: 10,
+      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
+      author: '张小美',
+      time: '32`15`22',
+      people: '20177'
+    }
+  ]
+
+  if(req.query.type === 'wk') {
+    res.json({
+      code: 0,
+      data: data
+    })
+  } else {
+    res.json({
+      code: 1
+    })
   }
 })
 
