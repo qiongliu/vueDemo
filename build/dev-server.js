@@ -94,41 +94,6 @@ apiRoutes.get('/getWkInfo',function(req,res) {
       author: '张小美',
       time: '32`15`22',
       people: '20177'
-    },
-    {
-      id: 6,
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
-      author: '张小美',
-      time: '32`15`22',
-      people: '20177'
-    },
-    {
-      id: 7,
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
-      author: '张小美',
-      time: '32`15`22',
-      people: '20177'
-    },
-    {
-      id: 8,
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
-      author: '张小美',
-      time: '32`15`22',
-      people: '20177'
-    },
-    {
-      id: 9,
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
-      author: '张小美',
-      time: '32`15`22',
-      people: '20177'
-    },
-    {
-      id: 10,
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
-      author: '张小美',
-      time: '32`15`22',
-      people: '20177'
     }
   ]
 

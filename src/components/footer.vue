@@ -16,9 +16,11 @@
 	@import '../common/css/variable';
 	@import '../common/css/mixin';
 	.m_footer {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
 		background: $c-topft-bg;
 		display: flex;
-		// align-self: flex-end;
 		.item {
 			flex: 1;
 			text-align: center;
@@ -27,6 +29,7 @@
 			color: $c-ft-font;
 			background-position: center center;
 			background-repeat: no-repeat;
+			background-size: 1.906667rem 1.293333rem;
 			&.active {
 				color: $c-ft-font-ac;
 			}

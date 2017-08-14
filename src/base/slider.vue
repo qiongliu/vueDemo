@@ -131,7 +131,7 @@
 	@import '../common/css/variable';
 	@import '../common/css/mixin';
 	.slider {
-		min-height: 1;
+		min-height: 1px;
 		position: relative;
 		overflow: hidden;
 		.slider-group {

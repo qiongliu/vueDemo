@@ -80,6 +80,7 @@
         this.scroll && this.scroll.enable()
       },
       refresh() {
+        console.log(2);
         this.scroll && this.scroll.refresh()
       },
       scrollTo() {
@@ -92,7 +93,6 @@
     watch: {
       data() {
         setTimeout(() => {
-        	console.log(this.data)
           this.refresh()
         }, this.refreshDelay)
       }

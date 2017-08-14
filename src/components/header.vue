@@ -27,7 +27,6 @@
 		h1 {
 			@include px2rem (height,128);
 			@include px2rem (line-height,170);
-			@include px2rem (width,750);
 			@include px2px (font-size,38);
 			background-color: $c-topft-bg;
 			color: #fff;
