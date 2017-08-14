@@ -97,7 +97,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="virtual-footer"></div>
+				<!-- <div class="virtual-footer"></div> -->
 			</div>
 		</scroll>
 	</div>
@@ -150,10 +150,10 @@
 	@import '../common/css/variable';
 	@import '../common/css/mixin';
 	.index {
-		position: fixed;
+		position: absolute;
 		width: 100%;
 		top: 1.706667rem;
-		bottom: 0;
+		bottom: 1.28rem;
 	}
 	.content {
 		height: 100%;
