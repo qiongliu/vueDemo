@@ -3,8 +3,8 @@
 		<router-link tag="div" class="item" to="/index">
 			<span>首页</span>
 		</router-link>
-		<router-link tag="div" class="item" to="/test">
-			<span>试卷</span>
+		<router-link tag="div" class="item" to="/res">
+			<span>资源</span>
 		</router-link>
 		<router-link tag="div" class="item" to="/wk">
 			<span>微课</span>

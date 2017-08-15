@@ -21,7 +21,7 @@
 					<ul class="subject">
 						<li v-for="item in subject"><a href="javascript:;">{{item.name}}</a></li>
 					</ul>
-					<res-content :data="resInfo"></res-content>
+					<res-content :data="resInfo" @goResDetail="goResDetail"></res-content>
 				</div>
 				<!-- <div class="virtual-footer"></div> -->
 			</div>
@@ -31,11 +31,12 @@
 
 <script>
 	import Slider from 'base/slider'
-	import WkContent from 'components/wk-content'
-	import ResContent from 'components/res-content'
+	import WkContent from 'base/card-view'
+	import ResContent from 'base/list-view'
 	import Scroll from 'base/scroll'
 	import * as getData from 'api/getIndexInfo'
 	import {ERR_OK} from 'api/config'
+	import {mapMutations} from 'vuex'
 	export default {
 		data () {
 			return {
@@ -98,13 +99,22 @@
 					this.checkloaded = true
 					this.$refs.scroll.refresh()
 				}
-			}
+			},
+			goResDetail (item) {
+				this.$router.push({
+					path: `/res/:${item.id}`
+				})
+				
+				this.setTitle = "资源"
+			},
+			...mapMutations ({
+				setTitle: 'SET_TITLE'
+			})
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	@import '../common/css/variable';
 	@import '../common/css/mixin';
 	.index {
 		position: absolute;

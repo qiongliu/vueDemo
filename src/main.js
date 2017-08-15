@@ -7,6 +7,7 @@ import router from './router'
 import fastclick from 'fastclick'
 import 'lib-flexible'
 import lazyLoad from 'vue-lazyload'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -22,6 +23,7 @@ Vue.use(lazyLoad,{
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

@@ -1,21 +1,24 @@
 <template>
 	<div class="m_header">
 		<div class="back" v-if="isBack"></div>
-		<h1 v-text="title"></h1>
+		<h1>{{title}}</h1>
 	</div>
 </template>
 
 <script>
+	import {mapGetters} from 'vuex'
+
 	export default {
 		props: {
 			isBack: {
 				type: Boolean,
 				default: false
-			},
-			title: {
-				type: String,
-				default: '首页'
 			}
+		},
+		computed: {
+			...mapGetters([
+				'title'
+			])
 		}
 	}
 </script>

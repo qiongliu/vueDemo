@@ -1,7 +1,7 @@
 <template>
 	<ul class="res-content">
 		<li v-for="item in data">
-		 <a :href="item.linkUrl">
+		 <a href="www.baidu.com" @click.prevent="goDetailPage(item)">
 			<div class="img">
 				<img src="../common/images/ppt.png" alt="">
 			</div>
@@ -20,6 +20,11 @@
 			data: {
 				type: Array,
 				default: []
+			}
+		},
+		methods: {
+			goDetailPage (item) {
+				this.$emit('goResDetail',item)
 			}
 		}
 	}

@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from 'components/index'
-import Test from 'components/test'
+import Res from 'components/res'
 import Wk from 'components/wk'
+import ResDetail from 'components/res-detail'
 
 Vue.use(Router)
 
@@ -19,8 +20,14 @@ export default new Router({
     	component: Index
     },
     {
-    	path: '/test',
-    	component: Test
+    	path: '/res',
+    	component: Res,
+      children: [
+        {
+          path: ':id',
+          component: ResDetail
+        }
+      ]
     },
     {
     	path: '/wk',
