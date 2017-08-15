@@ -21,8 +21,8 @@
         default: false
       },
       data: {
-        type: Array,
-        default: null
+        type: Boolean,
+        default: false
       },
       pullup: {
         type: Boolean,
@@ -80,7 +80,6 @@
         this.scroll && this.scroll.enable()
       },
       refresh() {
-        console.log(2);
         this.scroll && this.scroll.refresh()
       },
       scrollTo() {

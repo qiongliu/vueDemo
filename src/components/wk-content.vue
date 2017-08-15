@@ -34,7 +34,6 @@
 		box-sizing: border-box;
 		a {
 			display: block;
-			width: 4.6rem;
 			height: 3.453333rem;
 		}
 		img {

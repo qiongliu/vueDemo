@@ -109,6 +109,118 @@ apiRoutes.get('/getWkInfo',function(req,res) {
   }
 })
 
+apiRoutes.get('/getSubject',function(req,res) {
+  var data = [
+    {
+      id: 1,
+      name: '语文',
+      linkUrl: 'javascript:;'
+    },
+    {
+      id: 2,
+      name: '数学',
+      linkUrl: 'javascript:;'
+    },
+    {
+      id: 3,
+      name: '英语',
+      linkUrl: 'javascript:;'
+    },
+    {
+      id: 4,
+      name: '物理',
+      linkUrl: 'javascript:;'
+    },
+    {
+      id: 5,
+      name: '化学',
+      linkUrl: 'javascript:;'
+    },
+    {
+      id: 6,
+      name: '生物',
+      linkUrl: 'javascript:;'
+    },
+    {
+      id: 7,
+      name: '美术',
+      linkUrl: 'javascript:;'
+    },
+    {
+      id: 8,
+      name: '更多',
+      linkUrl: 'javascript:;'
+    }
+  ]
+
+  if(req.query.type === 'subject') {
+    res.json({
+      code: 0,
+      data: data
+    })
+  } else {
+    res.json({
+      code: 1
+    })
+  }
+})
+
+apiRoutes.get('/getResInfo',function(req,res) {
+  var data = [
+    {
+      id: 1,
+      linkUrl: 'javascript:;',
+      ext: 'doc',
+      name: '上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）',
+      subject: '英语',
+      type: '中考真题'
+    },
+    {
+      id: 2,
+      linkUrl: 'javascript:;',
+      ext: 'ppt',
+      name: '2017高考数学江苏（文）考前三个月配套练习--9.4转化与化归思想',
+      subject: '语文',
+      type: '中考真题'
+    },
+    {
+      id: 3,
+      linkUrl: 'javascript:;',
+      ext: 'gif',
+      name: '小神龙2017高考真题（图片版）',
+      subject: '化学',
+      type: '中考真题'
+    },
+    {
+      id: 4,
+      linkUrl: 'javascript:;',
+      ext: 'jpg',
+      name: '真束神龙高考真题2017',
+      subject: '物理',
+      type: '中考真题'
+    },
+    {
+      id: 5,
+      linkUrl: 'javascript:;',
+      ext: 'zip',
+      name: '上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）',
+      subject: '生物',
+      type: '中考真题'
+    },
+  ]
+
+  if(req.query.type === 'res') {
+    res.json({
+      code: 0,
+      data: data
+    })
+  } else {
+    res.json({
+      code: 1
+    })
+  }
+})
+
 app.use('/api',apiRoutes)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {

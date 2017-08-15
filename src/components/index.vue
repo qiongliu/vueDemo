@@ -1,11 +1,11 @@
 <template>
 	<div class="index">
-		<scroll class="content" :data="wkInfo">
+		<scroll ref="scroll" class="content" :data="dataLoad">
 			<div>
 				<slider v-if="sliderInfo.length">
 					<div v-for="item in sliderInfo">
 						<a :href="item.linkUrl">
-							<img :src="item.imgUrl" alt="">
+							<img :src="item.imgUrl" alt="" @load='imgLoad'>
 						</a>
 					</div>
 				</slider>
@@ -19,83 +19,9 @@
 				<div class="res">
 					<h2><span></span>为您推荐的好资源<span></span></h2>
 					<ul class="subject">
-						<li><a href="javascript:;">数学</a></li>
-						<li><a href="javascript:;">语文</a></li>
-						<li><a href="javascript:;">英语</a></li>
-						<li><a href="javascript:;">物理</a></li>
-						<li><a href="javascript:;">化学</a></li>
-						<li><a href="javascript:;">政治</a></li>
-						<li><a href="javascript:;">历史</a></li>
-						<li><a href="javascript:;">更多</a></li>
+						<li v-for="item in subject"><a href="javascript:;">{{item.name}}</a></li>
 					</ul>
-					<ul class="info-group">
-						<li>
-						 <a href="javascript:;">
-							<div class="img">
-								<img src="../common/images/ppt.png" alt="">
-							</div>
-							<div class="info">
-								<p class="name">英语八年级上译林牛津版测试题</p>
-								<p class="detail">学业测试 英语</p>
-							</div>
-						 </a>
-						</li>
-						<li>
-						 <a href="javascript:;">
-							<div class="img">
-								<img src="../common/images/ppt.png" alt="">
-							</div>
-							<div class="info">
-								<p class="name">英语八年级上译林牛津版测试题</p>
-								<p class="detail">学业测试 英语</p>
-							</div>
-						 </a>
-						</li>
-						<li>
-						 <a href="javascript:;">
-							<div class="img">
-								<img src="../common/images/ppt.png" alt="">
-							</div>
-							<div class="info">
-								<p class="name">英语八年级上译林牛津版测试题</p>
-								<p class="detail">学业测试 英语</p>
-							</div>
-						 </a>
-						</li>
-						<li>
-						 <a href="javascript:;">
-							<div class="img">
-								<img src="../common/images/ppt.png" alt="">
-							</div>
-							<div class="info">
-								<p class="name">英语八年级上译林牛津版测试题</p>
-								<p class="detail">学业测试 英语</p>
-							</div>
-						 </a>
-						</li>
-						<li>
-						 <a href="javascript:;">
-							<div class="img">
-								<img src="../common/images/ppt.png" alt="">
-							</div>
-							<div class="info">
-								<p class="name">英语八年级上译林牛津版测试题</p>
-								<p class="detail">学业测试 英语</p>
-							</div>
-						 </a>
-						</li>
-						<li>
-						 <a href="javascript:;">
-							<div class="img">
-								<img src="../common/images/ppt.png" alt="">
-							</div>
-							<div class="info">
-								<p class="name">英语八年级上译林牛津版测试题</p>
-								<p class="detail">学业测试 英语</p>
-							</div>
-						 </a>
-						</li>
-					</ul>
+					<res-content :data="resInfo"></res-content>
 				</div>
 				<!-- <div class="virtual-footer"></div> -->
 			</div>
@@ -106,28 +32,43 @@
 <script>
 	import Slider from 'base/slider'
 	import WkContent from 'components/wk-content'
+	import ResContent from 'components/res-content'
 	import Scroll from 'base/scroll'
-	import {getSliderInfo,getWkInfo} from 'api/getIndexInfo'
+	import * as getData from 'api/getIndexInfo'
 	import {ERR_OK} from 'api/config'
 	export default {
 		data () {
 			return {
 				sliderInfo: [],
-				wkInfo: []
+				wkInfo: [],
+				resInfo: [],
+				subject: []
 			}
 		},
 		components: {
 			Slider,
 			Scroll,
-			WkContent
+			WkContent,
+			ResContent
 		},
 		created() {
 			this._getSliderInfo()
 			this._getWkInfo()
+			this._getSubject()
+			setTimeout( ()=> {
+				this._getResInfo()
+			},3000)
+		},
+		computed: {
+			dataLoad () {
+				if (this.sliderInfo.length && this.wkInfo.length && this.resInfo.length && this.subject.length) {
+					return true
+				}
+			}
 		},
 		methods: {
 			_getSliderInfo () {
-				getSliderInfo().then((res) => {
+				getData.getSliderInfo().then((res) => {
 					if(res.code === ERR_OK) {
 						this.sliderInfo = res.data
 					}
@@ -136,11 +77,27 @@
 				})
 			},
 			_getWkInfo () {
-				getWkInfo().then((res) => {
+				getData.getWkInfo().then((res) => {
 					this.wkInfo = res.data
 				},(err) => {
 					console.log(err)
 				})
+			},
+			_getSubject () {
+				getData.getSubject().then((res) => {
+					this.subject = res.data
+				})
+			},
+			_getResInfo () {
+				getData.getResInfo().then((res) => {
+					this.resInfo = res.data
+				})
+			},
+			imgLoad () {
+				if(!this.checkloaded) {
+					this.checkloaded = true
+					this.$refs.scroll.refresh()
+				}
 			}
 		}
 	}
@@ -178,7 +135,7 @@
 			background-repeat: no-repeat;
 			background-size: 100% 100%;
 			@include bg-image('../common/images/i-wk-title')
-			@include px2px(margin-right, 8)
+			margin-right: 0.106667rem;
 		}
 	}
 	.res {
@@ -219,48 +176,5 @@
 				line-height: 0.773333rem;
 			}
 		}
-		.info-group {
-			li {
-				border-bottom: solid #e0e0e0;
-				@include px2px(border-width, 1)
-			}
-			a {
-				height: 1.733333rem;
-				display: flex;
-				align-items: center;
-				padding: 0 0.213333rem;
-			}
-			.img {
-				width: 1.106667rem;
-				height: 1.16rem;
-				border-width: 0.013333rem;
-				border: solid #e0e0e0;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-			img {
-				width: 0.693333rem;
-				height: 0.773333rem;
-			}
-			.info {
-				flex: 1;
-				margin-left: 0.266667rem;
-			}
-			p {
-				line-height: 0.613333rem;
-			}
-			.name {
-				@include px2px(font-size, 28)
-				color: #191919;
-			}
-			.detail {
-				@include px2px(font-size, 24)
-				color: #808080
-			}
-		}
-	}
-	.virtual-footer {
-		height: 1.28rem;
 	}
 </style>
