@@ -11,6 +11,7 @@ var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
+var db = require('./db.json')
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -30,17 +31,17 @@ apiRoutes.get('/getSliderInfo',function(req,res) {
     {
       id: 1,
       linkUrl: 'javascript:;',
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000001FpRLE2ID8HU.jpg'
+      imgUrl: '../common/images/banner_01.jpg'
     },
     {
       id: 2,
       linkUrl: 'javascript:;',
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg'
+      imgUrl: '../common/images/banner_02.jpg'
     },
     {
       id: 3,
       linkUrl: 'javascript:;',
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000yNjgm0xqknP.jpg'
+      imgUrl: '../common/images/banner_03.jpg'
     }
   ]
 
@@ -213,6 +214,34 @@ apiRoutes.get('/getResInfo',function(req,res) {
     res.json({
       code: 0,
       data: data
+    })
+  } else {
+    res.json({
+      code: 1
+    })
+  }
+})
+
+apiRoutes.get('/getChooses',function(req,res) {
+  
+  if(req.query.type === 'chooses') {
+    res.json({
+      code: 0,
+      data: db.chooses
+    })
+  } else {
+    res.json({
+      code: 1
+    })
+  }
+})
+
+apiRoutes.get('/getSelections',function(req,res) {
+  
+  if(req.query.type === 'selections') {
+    res.json({
+      code: 0,
+      data: db.selections
     })
   } else {
     res.json({

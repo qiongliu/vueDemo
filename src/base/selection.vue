@@ -1,13 +1,15 @@
 <template>
-	<div class="selections-wrap">
-		<div v-for="(item,index) in selections" class="selection">
-			<div class="title" @click="showList(index)">
-				<span class="name">{{item.type}}</span>
-				<span class="arrow"></span>
+	<div>
+		<div class="selections-wrap">
+			<div v-for="(item,index) in selections" class="selection">
+				<div class="title" :class="{active: currentIndex === index}" @click="showList(index)">
+					<span class="name">{{item.type}}</span>
+					<span class="arrow"></span>
+				</div>
+				<ul class="list" v-show="index === currentIndex">
+					<li v-for="subItem in item.content" @click="checked(subItem)">{{subItem}}</li>
+				</ul>
 			</div>
-			<ul class="list" v-show="index === currentIndex">
-				<li v-for="subItem in item.content" @click="checked(subItem)">{{subItem}}</li>
-			</ul>
 		</div>
 		<div class="mask" v-show="maskShow"></div>
 	</div>
@@ -51,11 +53,13 @@
 	.selections-wrap {
 		display: flex;
 		padding: 0 0.133333rem;
+		z-index: 999;
+		position: relative;
+		background-color: #fff;
 	}
 	.selection {
 		flex: 1;
 		margin: 0 0.133333rem;
-		z-index: 999;
 	}
 	.title {
 		height: 0.8rem;
@@ -65,13 +69,17 @@
 		display: flex;
 		border: 1px solid #ddd;
 		margin-bottom: 0.08rem;
+		&.active {
+			border-color: #26a5fa;
+		}
 		.name {
-			flex: 1;
+			flex: 1 0 0.8rem;
 			text-align: center;
 			@include px2px(font-size, 28)
+			@include ellipsis()
 		}
 		.arrow {
-			flex: 0 0 20%;
+			flex: 0 0 0.4rem;
 			position: relative;
 			display: flex;
 			justify-content: center;
@@ -98,7 +106,7 @@
 		border-radius: 0.053333rem;
 		left: 0;
 		right: 0;
-		margin: 0 0.133333rem;
+		// margin: 0 0.133333rem;
 		display: flex;
 		flex-flow: row wrap;
 		li {
@@ -114,7 +122,7 @@
 		left: 0;
 		right: 0;
 		top: $h-hd;
-		bottom: $h-bt;
+		bottom: $h-ft;
 		background-color: rgba(0,0,0,.4);
 	}
 </style>

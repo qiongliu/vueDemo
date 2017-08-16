@@ -1,15 +1,12 @@
 <template>
 	<div class="res">
-		<chooser :chooses="chooses"></chooser>
-		<div class="select">
-			<selection :selections="selections"></selection>
-		</div>
-		<div class="content">
-			<list-view :data="contentInfo"></list-view>
-		</div>
+		<chooser :chooses="chooses" @clickChoose="clickChoose"></chooser>
+		<selection :selections="selections"></selection>
+		<list-view :data="contentInfo"></list-view>
 		<keep-alive>
 			<router-view></router-view>		
 		</keep-alive>
+		<m-dialog></m-dialog>
 	</div>
 </template>
 
@@ -17,50 +14,47 @@
   import Chooser from 'base/chooser'
 	import Selection from 'base/selection'
 	import ListView from 'base/list-view'
-	import {getResInfo} from 'api/getResInfo'
+	import * as getData from 'api/getResInfo'
+	import MDialog from 'base/dialog'
 	export default {
 		components: {
 			Chooser,
 			Selection,
-			ListView
+			ListView,
+			MDialog
 		},
 		data () {
 			return {
-				chooses: ['好评','最新','最热'],
+				chooses: [],
 				contentInfo: [],
-				active: 0,
-				selections: [
-					{
-						type: '年级',
-						content: ['一年级','二年级','三年级','四年级','五年级','六年级','七年级']
-					},
-					{
-						type: '科目',
-						content: ['科目一','科目二','科目三','科目四','科目五','科目六','科目七','科目八','科目九','科目十']
-					},
-					{
-						type: '教材版本',
-						content: ['版本一','版本二','版本三','版本四']
-					},
-					{
-						type: '试卷分类',
-						content: ['试卷分类一','试卷分类二','试卷分类三','试卷分类四','试卷分类五','试卷分类六','试卷分类七']
-					}
-				]
+				selections: []
 			}
 		},
 		created () {
 			this._getContent()
+			this._getChooses()
+			this._getSelection()
 		},
 		methods: {
 			_getContent () {
-				getResInfo().then((res) => {
+				getData.getResInfo().then((res) => {
 					this.contentInfo = res.data
 				})
 			},
-			isActive (index) {
-				this.active = index
+			_getChooses () {
+				getData.getChooses().then((res) => {
+					this.chooses = res.data
+				})
+			},
+			_getSelection () {
+				getData.getSelections().then((res) => {
+					this.selections = res.data
+				})
+			},
+			clickChoose (choose) {
+				console.log(choose)
 			}
+
 		}
 	}
 </script>

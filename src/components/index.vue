@@ -5,7 +5,7 @@
 				<slider v-if="sliderInfo.length">
 					<div v-for="item in sliderInfo">
 						<a :href="item.linkUrl">
-							<img :src="item.imgUrl" alt="" @load='imgLoad'>
+							<img :src="img" alt="" @load='imgLoad'>
 						</a>
 					</div>
 				</slider>
@@ -43,7 +43,8 @@
 				sliderInfo: [],
 				wkInfo: [],
 				resInfo: [],
-				subject: []
+				subject: [],
+				img: require('../common/images/banner_01.jpg')
 			}
 		},
 		components: {
