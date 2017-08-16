@@ -1,0 +1,120 @@
+<template>
+	<div class="selections-wrap">
+		<div v-for="(item,index) in selections" class="selection">
+			<div class="title" @click="showList(index)">
+				<span class="name">{{item.type}}</span>
+				<span class="arrow"></span>
+			</div>
+			<ul class="list" v-show="index === currentIndex">
+				<li v-for="subItem in item.content" @click="checked(subItem)">{{subItem}}</li>
+			</ul>
+		</div>
+		<div class="mask" v-show="maskShow"></div>
+	</div>
+</template>
+
+<script>
+	export default {
+		props: {
+			selections: {
+				type: Array,
+				default: []
+			}
+		},
+		data () {
+			return {
+				currentIndex: null,
+				maskShow: false
+			}
+		},
+		methods: {
+			showList (index) {
+				if (this.currentIndex === index) {
+					this.currentIndex = null
+					this.maskShow = false
+				} else {
+					this.currentIndex = index
+					this.maskShow = true
+				}
+			},
+			checked (subItem) {
+				this.selections[this.currentIndex].type = subItem
+				this.currentIndex = null
+				this.maskShow = false
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	@import '../common/css/mixin';
+	.selections-wrap {
+		display: flex;
+		padding: 0 0.133333rem;
+	}
+	.selection {
+		flex: 1;
+		margin: 0 0.133333rem;
+		z-index: 999;
+	}
+	.title {
+		height: 0.8rem;
+		line-height: 0.8rem;
+		border-radius: 0.053333rem;
+		background-color: #f3f3f3;
+		display: flex;
+		border: 1px solid #ddd;
+		margin-bottom: 0.08rem;
+		.name {
+			flex: 1;
+			text-align: center;
+			@include px2px(font-size, 28)
+		}
+		.arrow {
+			flex: 0 0 20%;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-left: 1px solid #ddd;
+			&:after {
+				content: ' ';
+				width: 0;
+		    height: 0;
+		    line-height: 0;
+		    font-size: 0;
+		    overflow: hidden;
+				border-width: 0.133333rem;
+				border-color: #b2b2b2 transparent transparent transparent;
+				border-style: solid;
+				border-bottom: none;
+			}
+		}
+	}
+	.list {
+		position: absolute;
+		background-color: #fff;
+		box-shadow: 0 0 0.026667rem #aaa;
+		border-radius: 0.053333rem;
+		left: 0;
+		right: 0;
+		margin: 0 0.133333rem;
+		display: flex;
+		flex-flow: row wrap;
+		li {
+			flex: 0 0 3.2rem;
+			height: 1.2rem;
+			line-height: 1.2rem;
+			text-align: center;
+			@include px2px(font-size,24)
+		}
+	}
+	.mask {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: $h-hd;
+		bottom: $h-bt;
+		background-color: rgba(0,0,0,.4);
+	}
+</style>

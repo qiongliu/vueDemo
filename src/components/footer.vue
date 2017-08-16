@@ -1,16 +1,31 @@
 <template>
 	<div class="m_footer">
-		<router-link tag="div" class="item" to="/index">
+		<router-link tag="div" class="item" to="/index" @click.native="setTitle('首页')">
 			<span>首页</span>
 		</router-link>
-		<router-link tag="div" class="item" to="/res">
+		<router-link tag="div" class="item" to="/res" @click.native="setTitle('资源')">
 			<span>资源</span>
 		</router-link>
-		<router-link tag="div" class="item" to="/wk">
+		<router-link tag="div" class="item" to="/wk" @click.native="setTitle('微课')">
 			<span>微课</span>
 		</router-link>
 	</div>
 </template>
+
+<script>
+	import {mapMutations} from 'vuex'
+
+	export default {
+		methods: {
+			setTitle (pageName) {
+				this.setTitle(pageName)
+			},
+			...mapMutations({
+				setTitle: "SET_TITLE"
+			})
+		}
+	}
+</script>
 
 <style lang="scss">
 	@import '../common/css/variable';
@@ -29,7 +44,7 @@
 			color: $c-ft-font;
 			background-position: center center;
 			background-repeat: no-repeat;
-			background-size: 1.906667rem 1.293333rem;
+			background-size: 1.52rem 1.026667rem;
 			&.active {
 				color: $c-ft-font-ac;
 			}

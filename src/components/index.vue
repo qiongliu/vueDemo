@@ -56,9 +56,7 @@
 			this._getSliderInfo()
 			this._getWkInfo()
 			this._getSubject()
-			setTimeout( ()=> {
-				this._getResInfo()
-			},3000)
+			this._getResInfo()
 		},
 		computed: {
 			dataLoad () {
@@ -104,8 +102,7 @@
 				this.$router.push({
 					path: `/res/:${item.id}`
 				})
-				
-				this.setTitle = "资源"
+				this.setTitle('资源')
 			},
 			...mapMutations ({
 				setTitle: 'SET_TITLE'
