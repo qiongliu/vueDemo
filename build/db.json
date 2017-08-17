@@ -30,5 +30,291 @@
 			"type": "试卷分类",
 			"content": ["试卷分类一","试卷分类二","试卷分类三","试卷分类四","试卷分类五","试卷分类六","试卷分类七"]
 		}
-	]
+	],
+	"resNew": [
+    {
+      "id": 1,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 2,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 3,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 4,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 5,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 6,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 7,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 8,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 9,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 10,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 11,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 12,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 13,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 14,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 15,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 16,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 17,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 18,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 19,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(new)中考真题"
+    },
+    {
+      "id": 20,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(new)中考真题"
+    }
+  ],
+  "resHot": [
+    {
+      "id": 1,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(hot)中考真题"
+    },
+    {
+      "id": 2,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(hot)中考真题"
+    },
+    {
+      "id": 3,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(hot)中考真题"
+    },
+    {
+      "id": 4,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(hot)中考真题"
+    },
+    {
+      "id": 5,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(hot)中考真题"
+    }
+  ],
+  "resGood": [
+    {
+      "id": 1,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(good)中考真题"
+    },
+    {
+      "id": 2,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(good)中考真题"
+    },
+    {
+      "id": 3,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(good)中考真题"
+    },
+    {
+      "id": 4,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(good)中考真题"
+    },
+    {
+      "id": 5,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(good)中考真题"
+    },
+    {
+      "id": 6,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(good)中考真题"
+    },
+    {
+      "id": 7,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(good)中考真题"
+    },
+    {
+      "id": 8,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(good)中考真题"
+    },
+    {
+      "id": 9,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "语文",
+      "type": "(good)中考真题"
+    },
+    {
+      "id": 10,
+      "linkUrl": "javascript:;",
+      "ext": "doc",
+      "name": "上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）",
+      "subject": "英语",
+      "type": "(good)中考真题"
+    }
+  ]
 }

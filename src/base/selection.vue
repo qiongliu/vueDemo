@@ -7,7 +7,7 @@
 					<span class="arrow"></span>
 				</div>
 				<ul class="list" v-show="index === currentIndex">
-					<li v-for="subItem in item.content" @click="checked(subItem)">{{subItem}}</li>
+					<li v-for="subItem in item.content" @click="clickItem(subItem,index)">{{subItem}}</li>
 				</ul>
 			</div>
 		</div>
@@ -31,6 +31,11 @@
 		},
 		methods: {
 			showList (index) {
+				let currentItem = this.selections[index]
+				this.$emit("clickSelection",currentItem,index)
+
+				if (index && !this.selections[index - 1].checked) return
+
 				if (this.currentIndex === index) {
 					this.currentIndex = null
 					this.maskShow = false
@@ -39,10 +44,11 @@
 					this.maskShow = true
 				}
 			},
-			checked (subItem) {
-				this.selections[this.currentIndex].type = subItem
+			clickItem (subItem,index) {
+				this.selections[index].type = subItem
 				this.currentIndex = null
 				this.maskShow = false
+				this.selections[index].checked = true
 			}
 		}
 	}
@@ -124,5 +130,6 @@
 		top: $h-hd;
 		bottom: $h-ft;
 		background-color: rgba(0,0,0,.4);
+		z-index: 998;
 	}
 </style>

@@ -41,3 +41,23 @@ export function getSelections () {
 		return Promise.resolve(res.data)
 	})
 }
+
+export function getContent (type) {
+	const url = "/api/getContent"
+	
+
+	type = type || {
+    "id": 1,
+    "type": "最新"
+  }
+
+	const data = {
+		id: type.id
+	}
+
+	return axios.get(url,{
+		params: data
+	}).then((res) => {
+		return Promise.resolve(res.data)
+	})
+}

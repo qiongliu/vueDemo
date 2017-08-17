@@ -62,7 +62,7 @@
 		computed: {
 			dataLoad () {
 				if (this.sliderInfo.length && this.wkInfo.length && this.resInfo.length && this.subject.length) {
-					return true
+					return this.resInfo
 				}
 			}
 		},

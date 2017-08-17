@@ -21,8 +21,8 @@
         default: false
       },
       data: {
-        type: Boolean,
-        default: false
+        type: Array,
+        default: null
       },
       pullup: {
         type: Boolean,

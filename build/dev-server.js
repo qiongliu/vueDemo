@@ -207,7 +207,7 @@ apiRoutes.get('/getResInfo',function(req,res) {
       name: '上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）',
       subject: '生物',
       type: '中考真题'
-    },
+    }
   ]
 
   if(req.query.type === 'res') {
@@ -242,6 +242,33 @@ apiRoutes.get('/getSelections',function(req,res) {
     res.json({
       code: 0,
       data: db.selections
+    })
+  } else {
+    res.json({
+      code: 1
+    })
+  }
+})
+
+apiRoutes.get('/getContent',function(req,res) {
+  let data = []
+
+  switch (req.query.id) {
+    case "1":
+      data = db.resNew
+    break;
+    case "2":
+      data = db.resHot
+    break;
+    case "3":
+      data = db.resGood
+    break
+  }
+
+  if (data.length) {
+    res.json({
+      code: 0,
+      data: data
     })
   } else {
     res.json({
