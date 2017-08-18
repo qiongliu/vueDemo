@@ -44,7 +44,6 @@ export function getSelections () {
 
 export function getContent (type) {
 	const url = "/api/getContent"
-	
 
 	type = type || {
     "id": 1,

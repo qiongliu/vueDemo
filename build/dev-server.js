@@ -27,28 +27,11 @@ var compiler = webpack(webpackConfig)
 var apiRoutes = express.Router()
 
 apiRoutes.get('/getSliderInfo',function(req,res) {
-  var data = [
-    {
-      id: 1,
-      linkUrl: 'javascript:;',
-      imgUrl: '../common/images/banner_01.jpg'
-    },
-    {
-      id: 2,
-      linkUrl: 'javascript:;',
-      imgUrl: '../common/images/banner_02.jpg'
-    },
-    {
-      id: 3,
-      linkUrl: 'javascript:;',
-      imgUrl: '../common/images/banner_03.jpg'
-    }
-  ]
 
   if(req.query.type === 'slider') {
     res.json({
       code: 0,
-      data: data
+      data: db.indexSlider
     })
   } else {
     res.json({
@@ -58,50 +41,11 @@ apiRoutes.get('/getSliderInfo',function(req,res) {
 })
 
 apiRoutes.get('/getWkInfo',function(req,res) {
-  var data = [
-    {
-      id: 1,
-      linkUrl: 'javascript:;',
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
-      author: '张小美',
-      time: '32`15`22',
-      people: '20177'
-    },
-    {
-      id: 2,
-      linkUrl: 'javascript:;',
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
-      author: '张小美',
-      time: '32`15`22',
-      people: '20177'
-    },
-    {
-      id: 3,
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
-      author: '张小美',
-      time: '32`15`22',
-      people: '20177'
-    },
-    {
-      id: 4,
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
-      author: '张小美',
-      time: '32`15`22',
-      people: '20177'
-    },
-    {
-      id: 5,
-      imgUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000000NeTQL0VlT8k.jpg',
-      author: '张小美',
-      time: '32`15`22',
-      people: '20177'
-    }
-  ]
 
   if(req.query.type === 'wk') {
     res.json({
       code: 0,
-      data: data
+      data: db.indexVideo
     })
   } else {
     res.json({
@@ -111,53 +55,11 @@ apiRoutes.get('/getWkInfo',function(req,res) {
 })
 
 apiRoutes.get('/getSubject',function(req,res) {
-  var data = [
-    {
-      id: 1,
-      name: '语文',
-      linkUrl: 'javascript:;'
-    },
-    {
-      id: 2,
-      name: '数学',
-      linkUrl: 'javascript:;'
-    },
-    {
-      id: 3,
-      name: '英语',
-      linkUrl: 'javascript:;'
-    },
-    {
-      id: 4,
-      name: '物理',
-      linkUrl: 'javascript:;'
-    },
-    {
-      id: 5,
-      name: '化学',
-      linkUrl: 'javascript:;'
-    },
-    {
-      id: 6,
-      name: '生物',
-      linkUrl: 'javascript:;'
-    },
-    {
-      id: 7,
-      name: '美术',
-      linkUrl: 'javascript:;'
-    },
-    {
-      id: 8,
-      name: '更多',
-      linkUrl: 'javascript:;'
-    }
-  ]
 
   if(req.query.type === 'subject') {
     res.json({
       code: 0,
-      data: data
+      data: db.indexGrade
     })
   } else {
     res.json({
@@ -167,53 +69,11 @@ apiRoutes.get('/getSubject',function(req,res) {
 })
 
 apiRoutes.get('/getResInfo',function(req,res) {
-  var data = [
-    {
-      id: 1,
-      linkUrl: 'javascript:;',
-      ext: 'doc',
-      name: '上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）',
-      subject: '英语',
-      type: '中考真题'
-    },
-    {
-      id: 2,
-      linkUrl: 'javascript:;',
-      ext: 'ppt',
-      name: '2017高考数学江苏（文）考前三个月配套练习--9.4转化与化归思想',
-      subject: '语文',
-      type: '中考真题'
-    },
-    {
-      id: 3,
-      linkUrl: 'javascript:;',
-      ext: 'gif',
-      name: '小神龙2017高考真题（图片版）',
-      subject: '化学',
-      type: '中考真题'
-    },
-    {
-      id: 4,
-      linkUrl: 'javascript:;',
-      ext: 'jpg',
-      name: '真束神龙高考真题2017',
-      subject: '物理',
-      type: '中考真题'
-    },
-    {
-      id: 5,
-      linkUrl: 'javascript:;',
-      ext: 'zip',
-      name: '上海语文word版-2017年普通高等学校招生全国统一考试（无答案）（图片版）',
-      subject: '生物',
-      type: '中考真题'
-    }
-  ]
-
+  
   if(req.query.type === 'res') {
     res.json({
       code: 0,
-      data: data
+      data: db.indexRes
     })
   } else {
     res.json({

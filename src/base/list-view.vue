@@ -1,30 +1,62 @@
 <template>
-	<ul class="res-content">
-		<li v-for="item in data">
-		 <a href="www.baidu.com" @click.prevent="goDetailPage(item)">
-			<div class="img">
-				<img src="../common/images/ppt.png" alt="">
-			</div>
-			<div class="info">
-				<p class="name">{{item.name}}</p>
-				<p class="detail">{{item.type}} {{item.subject}}</p>
-			</div>
-		 </a>
-		</li>
-	</ul>
+	<scroll class="list-view" :data="data" ref="scroll">
+		<ul class="groups">
+			<li v-for="group in data" ref="group">
+				<h2 v-show="hasTitle">{{group.title}}</h2>
+				<ul class="items">
+					<li v-for="item in group.items" @click.prevent="goDetailPage(item)">
+						<div class="img">
+							<img src="../common/images/ppt.png" alt="">
+						</div>
+						<div class="info">
+							<p class="name">{{item.name}}</p>
+							<p class="detail">{{item.type}}</p>
+						</div>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="shortcut" v-show="hasShortcut" @touchstart="touchShortcut">
+			<li v-for="(item,index) in shortcutList" :data-index="index">{{item}}</li>
+		</ul>
+	</scroll>
 </template>
 
 <script>
+	import Scroll from 'base/scroll'
+	import {getData} from 'common/js/dom'
 	export default {
+		components: {
+			Scroll
+		},
 		props: {
 			data: {
 				type: Array,
 				default: []
+			},
+			hasTitle: {
+				type: Boolean,
+				default: false
+			},
+			hasShortcut: {
+				type: Boolean,
+				default: false
+			}
+		},
+		computed: {
+			shortcutList () {
+				return this.data.map((item) => {
+					return item.title.substr(0,1)
+				})
 			}
 		},
 		methods: {
 			goDetailPage (item) {
 				this.$emit('goResDetail',item)
+			},
+			touchShortcut (e) {
+				let anchorIndex = getData(e.target, 'index')
+				this.$refs.scroll.scrollToElement(this.$refs.group[anchorIndex],0)
 			}
 		}
 	}
@@ -33,23 +65,30 @@
 <style lang="scss" scoped>
 	@import '../common/css/mixin';
 	@import '../common/css/fileicon.css';
-	.res-content {
+	.list-view {
+		height: 100%;
+		overflow: hidden;
+	}
+	.groups {
 		li {
-			border-bottom: solid #e0e0e0;
-			@include px2px(border-width, 1)
+			border-bottom: 1px solid #e0e0e0;
 		}
-		a {
-			height: 1.733333rem;
-			display: flex;
-			align-items: center;
+		h2 {
+			height: 0.666667rem;
+			background-color: #f0f0f0;
+			line-height: 0.666667rem;
 			padding: 0 0.213333rem;
+		}
+	}
+	.items {
+		li {
+			display: flex;
+			padding: 0.266667rem 0.133333rem;
 		}
 		.img {
 			width: 1.106667rem;
 			height: 1.16rem;
-			@include px2px(border-width, 1)
-			border-style: solid;
-			border-color: #e0e0e0;
+			border: 1px solid #e0e0e0;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -75,6 +114,16 @@
 		.detail {
 			@include px2px(font-size, 24)
 			color: #808080
+		}
+	}
+	.shortcut {
+		position: absolute;
+		background-color: #cdcdcd;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 0;
+		li {
+			margin: 0.266667rem 0.133333rem;
 		}
 	}
 </style>

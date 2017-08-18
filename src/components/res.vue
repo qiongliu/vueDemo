@@ -3,9 +3,7 @@
 		<chooser :chooses="chooses" @clickChoose="clickChoose"></chooser>
 		<selection :selections="selections" @clickSelection="clickSelection"></selection>
 		<div class="content">
-			<scroll ref="scroll" :data="dataLoad" class="scroll">
-				<list-view :data="content" @goResDetail="goResDetail"></list-view>
-			</scroll>
+			<list-view :data="content" :hasTitle="true" :hasShortcut="true" @goResDetail="goResDetail"></list-view>
 		</div>
 		<keep-alive>
 			<router-view></router-view>		
@@ -69,6 +67,7 @@
 			clickChoose (choose) {
 				getData.getContent(choose).then((res) => {
 					this.content = res.data
+					console.log(3)
 					this.$refs.scroll.refresh()
 				})
 			},
@@ -83,15 +82,12 @@
 			clickDialog (type) {
 				switch (type) {
 					case "confirm": 
-						console.log(type)
 						this.showDialog = false
 						break;
 					case "cancel": 
-						console.log(type)
 						this.showDialog = false
 						break;
 					case "close": 
-						console.log(type)
 						this.showDialog = false
 						break;
 				}
@@ -111,9 +107,6 @@
 		position: fixed;
 		top: $h-hd + $h-chooser + $h-selection;
 		bottom: $h-ft;
-	}
-	.scroll {
-		height: 100%;
-		overflow: hidden;
+		width: 100%;
 	}
 </style>
