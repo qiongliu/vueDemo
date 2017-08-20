@@ -3,7 +3,13 @@
 		<chooser :chooses="chooses" @clickChoose="clickChoose"></chooser>
 		<selection :selections="selections" @clickSelection="clickSelection"></selection>
 		<div class="content">
-			<list-view :data="content" :hasTitle="true" :hasShortcut="true" @goResDetail="goResDetail"></list-view>
+			<list-view :data="content" 
+								 :hasTitle="true"
+								 :hasShortcut="true"
+								 :hasFixedTitle="true"
+								 :listenScroll="true"
+								 @goResDetail="goResDetail">
+			</list-view>
 		</div>
 		<keep-alive>
 			<router-view></router-view>		
@@ -64,11 +70,10 @@
 					this.selections = res.data
 				})
 			},
-			clickChoose (choose) {
-				getData.getContent(choose).then((res) => {
+			clickChoose (index) {
+				getData.getContent(index).then((res) => {
 					this.content = res.data
-					console.log(3)
-					this.$refs.scroll.refresh()
+					// this.$refs.scroll.refresh()
 				})
 			},
 			clickSelection (selection,index) {

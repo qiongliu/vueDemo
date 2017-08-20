@@ -14,7 +14,9 @@
 						<span></span>
 						<h2>优选微课</h2>
 					</div>
-					<wk-content :data="wkInfo"></wk-content>
+					<keep-alive>
+						<wk-content :data="wkInfo"></wk-content>
+					</keep-alive>
 				</div>
 				<div class="res">
 					<h2><span></span>为您推荐的好资源<span></span></h2>
