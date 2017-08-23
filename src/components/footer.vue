@@ -1,12 +1,12 @@
 <template>
-	<div class="m_footer">
-		<router-link tag="div" class="item" to="/index" @click.native="setTitle('首页')">
+	<div class="m_footer" @click="clickFooter">
+		<router-link tag="div" class="item" to="/index" data-title="首页">
 			<span>首页</span>
 		</router-link>
-		<router-link tag="div" class="item" to="/res" @click.native="setTitle('资源')">
+		<router-link tag="div" class="item" to="/res" data-title="资源">
 			<span>资源</span>
 		</router-link>
-		<router-link tag="div" class="item" to="/wk" @click.native="setTitle('微课')">
+		<router-link tag="div" class="item" to="/wk" data-title="微课">
 			<span>微课</span>
 		</router-link>
 	</div>
@@ -14,11 +14,13 @@
 
 <script>
 	import {mapMutations} from 'vuex'
+	import {getData} from 'common/js/dom'
 
 	export default {
 		methods: {
-			setTitle (pageName) {
-				this.setTitle(pageName)
+			clickFooter (e) {
+				let title = getData(e.target,'title')
+				this.setTitle(title)
 			},
 			...mapMutations({
 				setTitle: "SET_TITLE"
@@ -49,22 +51,22 @@
 				color: $c-ft-font-ac;
 			}
 			&:nth-child(1) {
-				@include bg-image('../common/images/index');
+				background-image: url(../common/images/index@2x.png);
 			}
 			&:nth-child(2) {
-				@include bg-image('../common/images/test');
+				background-image: url(../common/images/test@2x.png);
 			}
 			&:nth-child(3) {
-				@include bg-image('../common/images/wk');
+				background-image: url(../common/images/wk@2x.png);
 			}
 			&.active:nth-child(1) {
-				@include bg-image('../common/images/index-ac');
+				background-image: url(../common/images/index-ac@2x.png);
 			}
 			&.active:nth-child(2) {
-				@include bg-image('../common/images/test-ac');
+				background-image: url(../common/images/test-ac@2x.png);
 			}
 			&.active:nth-child(3) {
-				@include bg-image('../common/images/wk-ac');
+				background-image: url(../common/images/wk-ac@2x.png);
 			}
 		}
 	}

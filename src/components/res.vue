@@ -4,11 +4,11 @@
 		<selection :selections="selections" @clickSelection="clickSelection"></selection>
 		<div class="content">
 			<list-view :data="content" 
-								 :hasTitle="true"
-								 :hasShortcut="true"
-								 :hasFixedTitle="true"
-								 :listenScroll="true"
-								 @goResDetail="goResDetail">
+								 :hasTitle="false"
+								 :hasShortcut="false"
+								 :hasFixedTitle="false"
+								 :listenScroll="false"
+								 @clickItem="goResDetail">
 			</list-view>
 		</div>
 		<keep-alive>
@@ -27,6 +27,7 @@
 	import ListView from 'base/list-view'
 	import * as getData from 'api/getResInfo'
 	import MDialog from 'base/dialog'
+	import {mapMutations} from 'vuex'
 	export default {
 		components: {
 			Chooser,
@@ -73,7 +74,6 @@
 			clickChoose (index) {
 				getData.getContent(index).then((res) => {
 					this.content = res.data
-					// this.$refs.scroll.refresh()
 				})
 			},
 			clickSelection (selection,index) {
@@ -99,9 +99,16 @@
 			},
 			goResDetail (item) {
 				this.$router.push({
-					path: `/res/:${item.id}`
+					path: `/res/:${item.id}`,
+					query: {
+						resId: item.id
+					}	
 				})
-			}
+				this.showBack(true)
+			},
+			...mapMutations ({
+				showBack: 'SET_SHOWBACK'
+			})
 		}
 	}
 </script>

@@ -1,24 +1,28 @@
 <template>
 	<div class="m_header">
-		<div class="back" v-if="isBack"></div>
+		<div class="back" v-if="showBack" @click="back"></div>
 		<h1>{{title}}</h1>
 	</div>
 </template>
 
 <script>
 	import {mapGetters} from 'vuex'
-
+	import {mapMutations} from 'vuex'
 	export default {
-		props: {
-			isBack: {
-				type: Boolean,
-				default: false
-			}
-		},
 		computed: {
 			...mapGetters([
-				'title'
+				'title',
+				'showBack'
 			])
+		},
+		methods: {
+			back () {
+				this.$router.back();
+				this.setShowBack(false);
+			},
+			...mapMutations ({
+				setShowBack: 'SET_SHOWBACK'
+			})
 		}
 	}
 </script>
@@ -27,6 +31,15 @@
 	@import '../common/css/variable';
 	@import '../common/css/mixin';
 	.m_header {
+		.back {
+			position: absolute;
+			height: $h-hd;
+			width: 1.333333rem;
+			top: 0;
+			left: 0;
+			background: url(../common/images/back.png)center 0.893333rem no-repeat;
+			background-size: 0.48rem 0.48rem;
+		}
 		h1 {
 			@include px2rem (height,128);
 			@include px2rem (line-height,170);

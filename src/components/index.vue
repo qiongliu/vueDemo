@@ -23,7 +23,7 @@
 					<ul class="subject">
 						<li v-for="item in subject"><a href="javascript:;">{{item.name}}</a></li>
 					</ul>
-					<res-content :data="resInfo" @goResDetail="goResDetail"></res-content>
+					<res-content :data="resInfo" @clickItem="goResDetail"></res-content>
 				</div>
 				<!-- <div class="virtual-footer"></div> -->
 			</div>
@@ -106,9 +106,11 @@
 					path: `/res/:${item.id}`
 				})
 				this.setTitle('资源')
+				this.setShowBack(true)
 			},
 			...mapMutations ({
-				setTitle: 'SET_TITLE'
+				setTitle: 'SET_TITLE',
+				setShowBack: 'SET_SHOWBACK'
 			})
 		}
 	}

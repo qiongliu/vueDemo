@@ -9,7 +9,7 @@
 			<li v-for="group in data" ref="group">
 				<h2 v-show="hasTitle">{{group.title}}</h2>
 				<ul class="items">
-					<li v-for="item in group.items" @click.prevent="goDetailPage(item)">
+					<li v-for="item in group.items" @click="clickItem(item)">
 						<div class="img">
 							<img src="../common/images/ppt.png" alt="">
 						</div>
@@ -83,8 +83,8 @@
 			}
 		},
 		methods: {
-			goDetailPage (item) {
-				this.$emit('goResDetail',item)
+			clickItem (item) {
+				this.$emit('clickItem',item)
 			},
 			touchShortcut (e) {
 				let anchorIndex = getData(e.target, 'index')
@@ -146,6 +146,7 @@
 		},
 		watch: {
 			data () {
+				this.$refs.scroll.scrollTo(0,0)
 				if (this.listenScroll) {
 					setTimeout(() => {
 						this._calculateHeight()
