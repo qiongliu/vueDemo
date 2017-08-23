@@ -60,3 +60,19 @@ export function getContent (type) {
 		return Promise.resolve(res.data)
 	})
 }
+
+export function getResDetail (id) {
+	const url = "/api/getResDetail"
+
+	id = id || 1
+
+	const data = {
+		id: id
+	}
+
+	return axios.get(url,{
+		params: data
+	}).then((res) => {
+		return Promise.resolve(res.data)
+	})
+}

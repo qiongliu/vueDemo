@@ -1,31 +1,25 @@
 <template>
 	<transition name="slide">
-		<div class="res">
+		<div class="res" v-for="item in data">
 			<div class="header" ref="header">
 					<div class="title">
-					<p class="name">江苏常州翠竹中学16-17学年八年级下第二 次月考测试题-英语</p>
-					<span class="time">2017-05-22 10:23:20</span>
+					<p class="name">{{item.title}}</p>
+					<span class="time">{{item.time}}</span>
 				</div>
 				<div class="fn">
 					<div class="praise">
 						<span class="i-praise"></span>
-						<span class="data">1132</span>
+						<span class="data">{{item.praise}}</span>
 					</div>
 					<div class="download">
 						<span class="i-download"></span>
-						<span class="data">1132</span>
+						<span class="data">{{item.download}}</span>
 					</div>
 				</div>
 			</div>
-			<Scroll class="scroll" ref="scroll">
+			<Scroll class="scroll" ref="scroll" :data="data">
 				<div>
-					<pre>会有 6 个(CSS)类名在 enter/leave 的过渡中切换
-1、v-enter: 定义进入过渡的开始状态。在元素被插入时生效，在下一个帧移除。
-2、v-enter-active: 定义过渡的状态。在元素整个过渡过程中作用，在元素被插入时生效，在 transition/animation 完成之后移除。 这个类可以被用来定义过渡的过程时间，延迟和曲线函数。
-3、v-enter-to: 2.1.8版及以上 定义进入过渡的结束状态。在元素被插入一帧后生效（于此同时 v-enter 被删除），在 transition/animation 完成之后移除。
-4、v-leave: 定义离开过渡的开始状态。在离开过渡被触发时生效，在下一个帧移除。
-5、v-leave-active: 定义过渡的状态。在元素整个过渡过程中作用，在离开过渡被触发后立即生效，在 transition/animation 完成之后移除。 这个类可以被用来定义过渡的过程时间，延迟和曲线函数。
-6、v-leave-to: 2.1.8版及以上 定义离开过渡的结束状态。在离开过渡被触发一帧后生效（于此同时 v-leave 被删除），在 transition/animation 完成之后移除。</pre>
+					<pre>{{item.content}}</pre>
 				</div>
 			</Scroll>
 		</div>
@@ -34,6 +28,7 @@
 
 <script>
 	import Scroll from 'base/scroll'
+	import {getResDetail} from 'api/getResInfo'
 	export default {
 		components: {
 			Scroll
@@ -41,17 +36,28 @@
 		created () {
 			this._getResDetail()
 		},
+		data () {
+			return {
+				data: []
+			}
+		},
 		mounted () {
 			setTimeout(() => {
-				let headerHeight = this.$refs.header.clientHeight
-				this.$refs.scroll.$el.style.top = headerHeight + 'px'
-				this.$refs.scroll.refresh()
+				this._calculateHeight()
 			},20)
 		},
 		methods: {
 			_getResDetail () {
 				let param = this.$route.query.resId
-				console.log(param)
+				getResDetail(param).then((res) => {
+					this.data.push(res.data)
+				})
+			},
+			_calculateHeight () {
+				let headerHeight = this.$refs.header.clientHeight
+				console.log(this.$refs.scroll.$el)
+				this.$refs.scroll.$el.style.top = headerHeight + 'px'
+				// this.$refs.scroll.refresh()
 			}
 		}
 	}

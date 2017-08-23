@@ -110,6 +110,36 @@ apiRoutes.get('/getSelections',function(req,res) {
   }
 })
 
+apiRoutes.get('/getResDetail',function(req,res) {
+  let data = {}
+
+  switch (req.query.id) {
+    case "1":
+      data = db.resDetail[0]
+    break;
+    case "2":
+      data = db.resDetail[1]
+    break;
+    case "3":
+      data = db.resDetail[2]
+    break;
+    case "4":
+      data = db.resDetail[3]
+    break
+  }
+
+  if (data) {
+    res.json({
+      code: 0,
+      data: data
+    })
+  } else {
+    res.json({
+      code: 1
+    })
+  }
+})
+
 apiRoutes.get('/getContent',function(req,res) {
   let data = []
 
