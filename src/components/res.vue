@@ -4,16 +4,14 @@
 		<selection :selections="selections" @clickSelection="clickSelection"></selection>
 		<div class="content">
 			<list-view :data="content" 
-								 :hasTitle="false"
-								 :hasShortcut="false"
-								 :hasFixedTitle="false"
-								 :listenScroll="false"
+								 :hasTitle="true"
+								 :hasShortcut="true"
+								 :hasFixedTitle="true"
+								 :listenScroll="true"
 								 @clickItem="goResDetail">
 			</list-view>
 		</div>
-		<keep-alive>
-			<router-view></router-view>		
-		</keep-alive>
+		<router-view></router-view>		
 		<m-dialog v-show="showDialog" @clickDialog="clickDialog">
 			<p>{{dialogContent}}</p>
 		</m-dialog>

@@ -103,7 +103,10 @@
 			},
 			goResDetail (item) {
 				this.$router.push({
-					path: `/res/:${item.id}`
+					path: `/res/:${item.id}`,
+					query: {
+						resId: item.id
+					}	
 				})
 				this.setTitle('资源')
 				this.setShowBack(true)

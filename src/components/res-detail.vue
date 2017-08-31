@@ -17,9 +17,10 @@
 					</div>
 				</div>
 			</div>
-			<Scroll class="scroll" ref="scroll" :data="data">
+			<div class="mask" ref="mask"></div>
+			<Scroll class="scroll" ref="scroll" :data="data" :probeType="3" :listenScroll="true" @scroll="listenScroll">
 				<div>
-					<pre>{{item.content}}</pre>
+					<pre v-html="item.content"></pre>
 				</div>
 			</Scroll>
 		</div>
@@ -38,7 +39,8 @@
 		},
 		data () {
 			return {
-				data: []
+				data: [],
+				posY: 0
 			}
 		},
 		mounted () {
@@ -47,6 +49,10 @@
 			},20)
 		},
 		methods: {
+			listenScroll (pos) {
+				// console.log(parseInt(this.$refs.mask[0].style.top))
+				this.posY = pos.y;
+			},
 			_getResDetail () {
 				let param = this.$route.query.resId
 				getResDetail(param).then((res) => {
@@ -54,10 +60,22 @@
 				})
 			},
 			_calculateHeight () {
-				let headerHeight = this.$refs.header.clientHeight
-				console.log(this.$refs.scroll.$el)
-				this.$refs.scroll.$el.style.top = headerHeight + 'px'
+				let headerHeight = this.$refs.header[0].clientHeight
+				this.$refs.scroll[0].$el.style.top = headerHeight + 'px'
+				this.$refs.mask[0].style.height = headerHeight + 'px'
+				this.$refs.mask[0].style.top = headerHeight + 'px'
 				// this.$refs.scroll.refresh()
+			}
+		},
+		watch: {
+			posY (y) {
+				console.log(y)
+				let offsetY = y
+				if (this.$refs.header[0].clientHeight + y <= 0) {
+					this.$refs.scroll[0].$el.style.Zindex = '-1'
+					return
+				}
+				this.$refs.mask[0].style.transform = `translate3d(0, ${offsetY}px, 0`
 			}
 		}
 	}
@@ -120,7 +138,7 @@
 		}
 	}
 	.scroll {
-		overflow: hidden;
+		// overflow: hidden;
 		position: absolute;
 		bottom: 0.4rem;
 		width: 100%;
@@ -133,6 +151,11 @@
 		@include px2px(font-size, 32);
 		color: #000;
 		line-height: 0.746667rem;
+	}
+	.mask {
+		background-color: #fff;
+		width: 100%;
+		position: absolute;
 	}
 	
 </style>
